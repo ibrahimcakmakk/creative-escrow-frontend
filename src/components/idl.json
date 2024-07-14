@@ -1,0 +1,88 @@
+{
+    "version": "0.1.0",
+    "name": "creative_escrow",
+    "instructions": [
+      {
+        "name": "initialize",
+        "accounts": [
+          {
+            "name": "escrow",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "buyer",
+            "isMut": false,
+            "isSigner": true
+          },
+          {
+            "name": "seller",
+            "isMut": false,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    ],
+    "accounts": [
+      {
+        "name": "escrow",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "buyer",
+              "type": "publicKey"
+            },
+            {
+              "name": "seller",
+              "type": "publicKey"
+            },
+            {
+              "name": "amount",
+              "type": "u64"
+            },
+            {
+              "name": "state",
+              "type": {
+                "defined": "EscrowState"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "types": [
+      {
+        "name": "EscrowState",
+        "type": {
+          "kind": "enum",
+          "variants": [
+            {
+              "name": "Pending",
+              "fields": []
+            },
+            {
+              "name": "Completed",
+              "fields": []
+            },
+            {
+              "name": "Canceled",
+              "fields": []
+            }
+          ]
+        }
+      }
+    ]
+  }
+  
